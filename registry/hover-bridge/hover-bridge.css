@@ -1,0 +1,58 @@
+/**
+ * hover-bridge — invisible hover bridge for dropdown menus.
+ *
+ * Apply `.hover-bridge` plus a size variant to a wrapper around your
+ * trigger and menu. The bridge is a ::before pseudo-element that spans
+ * the gap below the trigger without affecting layout.
+ */
+
+/* Base wrapper — positioning context only; no size or spacing changes. */
+.hover-bridge {
+  position: relative;
+  --hover-bridge-size: 1rem;
+}
+
+/*
+ * Invisible bridge — absolutely positioned so it never affects layout flow.
+ * Sits directly below the trigger (top: 100%) and spans only the gap height.
+ */
+.hover-bridge::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: var(--hover-bridge-size);
+  pointer-events: auto;
+}
+
+/* 8px gap — use when menu offset is 0.5rem. */
+.hover-bridge-sm {
+  --hover-bridge-size: 0.5rem;
+}
+
+/* 16px gap — default; use when menu offset is 1rem. */
+.hover-bridge-md {
+  --hover-bridge-size: 1rem;
+}
+
+/* 28px gap — use when menu offset is 1.75rem. */
+.hover-bridge-lg {
+  --hover-bridge-size: 1.75rem;
+}
+
+/*
+ * Debug overlay — reveals the bridge during development.
+ * Combine with a size variant: hover-bridge hover-bridge-md hover-bridge-debug
+ */
+.hover-bridge.hover-bridge-debug::before {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(59, 130, 246, 0.18) 0,
+    rgba(59, 130, 246, 0.18) 6px,
+    rgba(59, 130, 246, 0.06) 6px,
+    rgba(59, 130, 246, 0.06) 12px
+  );
+  outline: 1px dashed rgba(59, 130, 246, 0.35);
+  outline-offset: -1px;
+}

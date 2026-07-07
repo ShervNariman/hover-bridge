@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "hover-bridge",
+  "homepage": "https://github.com/hover-bridge/hover-bridge",
+  "items": [
+    {
+      "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+      "name": "hover-bridge",
+      "type": "registry:file",
+      "title": "hover-bridge",
+      "description": "A tiny CSS utility for forgiving hover menus.",
+      "files": [
+        {
+          "path": "registry/hover-bridge/hover-bridge.css",
+          "type": "registry:file"
+        }
+      ]
+    }
+  ]
+}
