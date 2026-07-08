@@ -17,15 +17,31 @@ Open [http://localhost:3000](http://localhost:3000) to compare the before/after 
 
 ## Installation
 
-**npm package — coming soon**
+### shadcn registry (recommended)
+
+Install directly from GitHub with the `shadcn` CLI — no build step or npm package required:
+
+```bash
+pnpm dlx shadcn@latest add ShervNariman/hover-bridge/hover-bridge
+```
+
+This copies `hover-bridge.css` into your project at `styles/hover-bridge.css`. Import it once in your global stylesheet:
+
+```css
+@import "./styles/hover-bridge.css";
+```
+
+### npm package
+
+**Coming soon** — not published yet.
 
 ```bash
 pnpm add hover-bridge
 ```
 
-Until the package is published, copy the CSS file into your project manually.
+### Manual copy
 
-## Manual usage
+Until the npm package is published, you can also copy the file by hand.
 
 1. Copy `registry/hover-bridge/hover-bridge.css` into your project.
 2. Import it once in your global stylesheet:
@@ -81,4 +97,27 @@ You can also set a custom gap with `--hover-bridge-size`.
 
 ## shadcn registry
 
-This repo includes a `registry.json` for installing via the shadcn CLI once published.
+This repo is a public [shadcn registry](https://ui.shadcn.com/docs/registry) — `registry.json` lives at the project root, so the CLI can install it straight from GitHub with no build step (see [Installation](#installation) above).
+
+### Testing the registry locally
+
+To test the registry the same way a local/URL install would work, build the static registry JSON and serve it with the dev server:
+
+```bash
+pnpm dlx shadcn@latest build
+pnpm dev
+```
+
+Then, from another project:
+
+```bash
+pnpm dlx shadcn@latest add http://localhost:3000/r/hover-bridge.json
+```
+
+`shadcn build` writes the generated item JSON to `public/r/hover-bridge.json` (gitignored — it's regenerated automatically before every `pnpm build` via the `prebuild` script). You can also run it manually with `pnpm registry:build`.
+
+Validate the registry schema at any time with:
+
+```bash
+pnpm dlx shadcn@latest registry validate ./registry.json
+```

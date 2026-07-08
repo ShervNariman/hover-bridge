@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# generated shadcn registry output
+/public/r/
+
 # production
 /build
 

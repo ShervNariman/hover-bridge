@@ -18,9 +18,11 @@
   ],
   "scripts": {
     "dev": "next dev",
+    "prebuild": "shadcn build",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
